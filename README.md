@@ -1,4 +1,4 @@
-CHATBOT AS A BASIC DIGITAL LIBRARY ASSISTANT
+A BASIC DIGITAL LIBRARY ASSISTANT
 
 ## Domain
 A chatbot designed to retrieve information from a mock or online library.
