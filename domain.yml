@@ -1,0 +1,161 @@
+version: '3.1'
+intents:
+- affirm
+- ask_expertise
+- book_availability
+- books_by_author
+- bot_challenge
+- choosing_library
+- deny
+- general_interest
+- goodbye
+- greet
+- mood_great
+- mood_unhappy
+- picking_genre
+- prefer_mock_center
+- prefer_op_lb
+- provide_number
+- request_read_book
+- selected_book
+- specific_interest
+- thank_you
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_you_are_welcome:
+  - text: You're welcome!
+  utter_expertise:
+  - text: I am a Library Look-Up Assistant. How can I help you?
+  utter_ask_genre_selection:
+  - text: Pick one, to show you related books (Type a genre name).
+  utter_suggest_book:
+  - text: OK, I have some ideas! Do you want suggestions from my MockCenter or from a real online source (OpenLibrary)?
+  utter_ask_book_selection:
+  - text: 'Pick a book for more info (type its title):'
+  utter_library_num:
+  - text: Write (1st/.../5th) or (e-Library1/.../e-Library5) to pick a MockLibrary from 1 to 5!
+  utter_assumption:
+  - text: Let me guess then...You just want to see the overall list of mockBooks. Right?!
+  utter_handling_interest:
+  - text: Rightfully so... It is indeed a wonderful book!
+  utter_end_conversation:
+  - text: OK, have a nice day.
+  utter_obstacle:
+  - text: Not ready for that, I am still learning...Sorry!
+  utter_author_req:
+  - text: Type the name of an author.
+  utter_ol_path:
+  - text: OK! Would you like to search books by author?
+  utter_book_req:
+  - text: By title then! Type a book's title, and I will check its availability in Open Library...
+  utter_ask_further_search:
+  - text: There is no online preview available for this book. Would you like to search for other editions?
+entities:
+- chosen_genre
+- mockBook_title
+- book_title
+- book_count
+- author_name
+- library_index
+slots:
+  author_name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: author_name
+  book_title:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: book_title
+  book_count:
+    type: float
+    mappings:
+    - type: from_entity
+      entity: book_count
+  mockLibrary_name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: mockLibrary_name
+  mockBook_title:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: mockBook_title
+  chosen_genre:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: chosen_genre
+  library_index:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: library_index
+  preview_status:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: custom
+synonyms:
+  e-Library1:
+  - 1st
+  - first
+  e-Library2:
+  - 2nd
+  - second
+  e-Library3:
+  - 3rd
+  - third
+  e-Library4:
+  - 4th
+  - fourth
+  e-Library5:
+  - 5th
+  - fifth
+actions:
+- utter_ask_book_selection
+- action_show_books_by_genre
+- action_mocklibrary_suggestions
+- action_book_details
+- utter_ask_genre_selection
+- action_present_genres
+- utter_suggest_book
+- utter_expertise
+- utter_greet
+- utter_happy
+- utter_author_req
+- action_confirm_author
+- action_validate_number
+- action_search_books_by_author
+- action_confirm_book_title
+- action_search_alternative_editions
+- action_check_availability
+- utter_ol_path
+- action_handle_second_no_response
+- action_books_perLibrary
+- utter_assumption
+- action_present_library_books
+- utter_library_num
+- utter_book_req
+- utter_you_are_welcome
+- utter_ask_further_search
+- utter_end_conversation
+- action_choosing_library
+- validate_selected_book
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
