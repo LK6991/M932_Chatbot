@@ -1,4 +1,4 @@
-# Task-Oriented Dialog System Prototype
+CHATBOT AS A BASIC DIGITAL LIBRARY ASSISTANT
 
 ## Domain
 A chatbot designed to retrieve information from a mock or online library.
