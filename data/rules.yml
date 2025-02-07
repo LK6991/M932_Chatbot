@@ -1,0 +1,180 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+  
+- rule: Handle ask expertise
+  steps:
+  - intent: ask_expertise
+  - action: utter_expertise
+
+- rule: Handle request read book
+  steps:
+  - intent: request_read_book
+  - action: utter_suggest_book
+
+- rule: forcing transition to ol
+  steps:
+  - intent: prefer_op_lb
+  - action: utter_ol_path
+  - action: action_listen
+  
+- rule: forcing transition to mock center
+  steps:
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - action: action_listen
+  
+- rule: request and live search
+  steps:
+  - action: utter_book_req
+  - intent: book_availability
+    entities:
+    - book_title: 
+  - slot_was_set:
+    - book_title: 
+  - action: action_confirm_book_title 
+  - action: action_check_availability   # Fetching the availability
+  - slot_was_set:
+    - preview_status: 
+
+- rule: replying to thanks
+  steps:
+  - intent: thank_you
+  - action: utter_you_are_welcome
+
+- rule: Handling interest
+  steps:
+  - intent: general_interest
+  - action: utter_handling_interest
+
+- rule: Handling request for buying
+  steps:
+  - intent: specific_interest
+  - action: utter_obstacle
+
+- rule: auth
+  steps:
+  - action: utter_author_req
+  - intent: books_by_author
+    entities:
+    - author_name: 
+  - slot_was_set:
+    - author_name: 
+  - action: action_confirm_author
+  
+- rule: auth2
+  steps:
+  - action: action_search_books_by_author
+  - intent: book_availability
+    entities:
+    - book_title: 
+  - slot_was_set:
+    - book_title: 
+  - action: action_confirm_book_title
+  - action: action_check_availability
+  - slot_was_set:
+    - preview_status: 
+  
+- rule: author_segment
+  steps:
+  - intent: books_by_author
+    entities:
+    - author_name: 
+  - slot_was_set:
+    - author_name: 
+  - action: action_confirm_author 
+  
+- rule: author_segment2b
+  steps:
+  - intent: book_availability
+    entities:
+    - book_title:
+  - slot_was_set:
+    - book_title:     
+  - action: action_confirm_book_title
+  - action: action_check_availability
+  - slot_was_set:
+    - preview_status: 
+  - action: action_listen
+
+  
+- rule: author_segment3 
+  steps:
+  - intent: book_availability 
+  - action: action_confirm_book_title
+  - action: action_check_availability
+  - slot_was_set:
+    - preview_status: 
+    
+    
+- rule: establishing checkpoint rule 
+  steps:   
+  - intent: provide_number
+    entities:
+    - book_count: 
+  - slot_was_set:
+    - book_count: 
+  - action: action_validate_number
+  - action: action_search_books_by_author
+
+- rule: connecting genre utterances1
+  steps:     
+  - action: action_present_genres
+  - action: utter_ask_genre_selection
+    
+- rule: connecting genre utterances2
+  steps:  
+  - action: utter_ask_genre_selection
+  - intent: picking_genre
+  - action: action_show_books_by_genre
+  - action: utter_ask_book_selection 
+  
+- rule: connecting libr utterances
+  steps: 
+  - action: utter_library_num
+  - intent: choosing_library
+    entities:
+    - library_index: 
+  - slot_was_set:
+    - library_index: 
+  - action: action_present_library_books
+  - action: utter_ask_book_selection
+ 
+- rule: connecting total list utterances
+  steps:  
+  - action: action_handle_second_no_response
+  - action: utter_ask_book_selection
+  - intent: selected_book
+  - action: action_book_details
+  
+- rule: finito
+  steps:
+  - intent: selected_book 
+  - action: action_book_details
+  
+- rule: connecting total list utterances
+  steps:  
+  - action: action_check_availability
+  - slot_was_set:
+    - preview_status: noview
+  - intent: affirm
+  - action: action_search_alternative_editions
+
+- rule: Trigger alternative edition search when preview is unavailable
+  condition:
+  - slot_was_set:
+    - preview_status: noview
+  steps:
+    - intent: affirm
+    - action: action_search_alternative_editions
+

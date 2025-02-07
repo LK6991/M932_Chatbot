@@ -1,0 +1,818 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: ask expertise
+  steps:
+  - intent: ask_expertise
+  - action: utter_expertise
+  - action: action_listen  # This ensures the bot waits for the user's input
+  
+- story: request read book
+  steps:
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - action: action_listen  # This ensures the bot waits for the user's input
+  
+- story: book_path
+  steps:
+  - action: action listen
+  - intent: selected_book
+    entities:
+    - mockBook_title: 
+  - slot_was_set:
+    - mockBook_title: 
+  - action: action_book_details
+
+- story: op_lb long view
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: ask_expertise
+  - action: utter_expertise
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - action: action_listen
+  - intent: prefer_op_lb
+  - action: utter_ol_path
+  - action: action_listen
+
+- story: mock_center long view 
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: ask_expertise
+  - action: utter_expertise
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - action: action_listen
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - action: action_listen
+
+- story: op_lb short view
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - action: action_listen
+  - intent: prefer_op_lb
+  - action: utter_ol_path
+  - action: action_listen
+  
+- story: op_lb short view unh
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - action: action_listen
+  - intent: prefer_op_lb
+  - action: utter_ol_path
+  - action: action_listen
+
+- story: mock_center short view
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - action: action_listen
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - action: action_listen
+  
+- story: mock center genre path
+  steps:
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - action: action_listen
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - action: action_listen
+  - intent: affirm
+  - action: action_present_genres
+  - action: utter_ask_genre_selection
+  - action: action_listen
+  - intent: picking_genre
+    entities:
+    - chosen_genre:
+  - slot_was_set:
+    - chosen_genre: 
+  - action: action_show_books_by_genre
+  - action: utter_ask_book_selection  # New step to ask for book selection
+  - action: action_listen
+  - intent: selected_book
+    entities:
+    - mockBook_title: 
+  - slot_was_set:
+    - mockBook_title: 
+  - action: action_book_details
+ 
+- story: mock center genre path2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: ask_expertise
+  - action: utter_expertise
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - intent: affirm
+  - action: action_present_genres
+  - action: utter_ask_genre_selection
+  - intent: picking_genre
+    entities:
+    - chosen_genre: 
+  - slot_was_set:
+    - chosen_genre: 
+  - action: action_show_books_by_genre
+  - action: utter_ask_book_selection
+  
+- story: mock center genre path short
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - action: action_listen
+  - intent: affirm
+  - action: action_present_genres
+  - action: utter_ask_genre_selection
+  - intent: picking_genre
+    entities:
+    - chosen_genre: 
+  - slot_was_set:
+    - chosen_genre: 
+  - action: action_show_books_by_genre
+  - action: utter_ask_book_selection
+  
+- story: mock center libraries path
+  steps:
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - action: action_listen
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - action: action_listen
+  - intent: deny
+  - action: action_books_perLibrary
+  - action: action_listen
+  - intent: affirm
+  - action: utter_library_num
+  - action: action_listen
+  - intent: choosing_library
+    entities:
+    - library_index: 
+  - slot_was_set:
+    - library_index: 
+  - action: action_present_library_books
+  - action: utter_ask_book_selection
+
+- story: mock center libraries2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: ask_expertise
+  - action: utter_expertise
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - intent: deny
+  - action: action_books_perLibrary
+  - action: action_listen
+  - intent: affirm
+  - action: utter_library_num
+  - intent: choosing_library
+    entities:
+    - library_index: 
+  - slot_was_set:
+    - library_index:
+  - action: action_present_library_books
+  - action: utter_ask_book_selection
+
+- story: mock center libraries2 shorter
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - intent: deny
+  - action: action_books_perLibrary
+  - intent: affirm
+  - action: utter_library_num
+  - intent: choosing_library
+    entities:
+    - library_index: 
+  - slot_was_set:
+    - library_index: 
+  - action: action_present_library_books
+  - action: utter_ask_book_selection
+
+- story: mock center double denial
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: ask_expertise
+  - action: utter_expertise
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - action: action_listen
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - action: action_listen
+  - intent: deny
+  - action: action_books_perLibrary
+  - action: action_listen
+  - intent: deny
+  - action: utter_assumption
+  - intent: affirm
+  - action: action_handle_second_no_response
+  - action: utter_ask_book_selection
+  - intent: selected_book
+    entities:
+    - mockBook_title: 
+  - slot_was_set:
+    - mockBook_title: 
+  - action: action_book_details
+  
+- story: mock center double denial short
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - action: action_listen
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - action: action_listen
+  - intent: deny
+  - action: action_books_perLibrary
+  - action: action_listen
+  - intent: deny
+  - action: utter_assumption
+  - intent: affirm
+  - action: action_handle_second_no_response
+  - action: utter_ask_book_selection
+
+- story: shutdown
+  steps:
+  - intent: deny
+  - action: action_books_perLibrary
+  - action: action_listen
+  - intent: deny
+  - action: utter_assumption
+  - intent: deny
+  - action: utter_end_conversation
+
+- story: shutdown no expertise
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - intent: deny
+  - action: action_books_perLibrary
+  - intent: deny
+  - action: utter_assumption
+  - intent: deny
+  - action: utter_end_conversation
+  
+- story: shutdown long
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: ask_expertise
+  - action: utter_expertise
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - intent: deny
+  - action: action_books_perLibrary
+  - intent: deny
+  - action: utter_assumption
+  - intent: deny
+  - action: utter_end_conversation
+
+- story: books from author name
+  steps:
+  - intent: prefer_op_lb
+  - action: utter_ol_path
+  - action: action_listen
+  - intent: affirm
+  - action: utter_author_req
+  - action: action_listen
+  - intent: books_by_author
+    entities:
+    - author_name: 
+  - slot_was_set:
+    - author_name: 
+  - checkpoint: provide_valid_number
+  - action: action_confirm_author
+  - intent: provide_number
+    entities:
+    - book_count: 
+  - slot_was_set:
+    - book_count:
+  - action: action_validate_number
+  - action: action_search_books_by_author
+  
+- story: books from author long view
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: ask_expertise
+  - action: utter_expertise
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - action: action_listen
+  - intent: prefer_op_lb
+  - action: utter_ol_path
+  - action: action_listen
+  - intent: affirm
+  - action: utter_author_req
+  - action: action_listen
+  - intent: books_by_author
+    entities:
+    - author_name: 
+  - slot_was_set:
+    - author_name: 
+  - checkpoint: provide_valid_number
+  - action: action_confirm_author
+  - intent: provide_number
+    entities:
+    - book_count: 
+  - slot_was_set:
+    - book_count:
+  - action: action_validate_number
+  - action: action_search_books_by_author
+
+- story: books from author no expertise
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - action: action_listen
+  - intent: prefer_op_lb
+  - action: utter_ol_path
+  - action: action_listen
+  - intent: affirm
+  - action: utter_author_req
+  - action: action_listen
+  - intent: books_by_author
+    entities:
+    - author_name: 
+  - slot_was_set:
+    - author_name: 
+  - checkpoint: provide_valid_number
+  - action: action_confirm_author
+  - intent: provide_number
+    entities:
+    - book_count: 
+  - slot_was_set:
+    - book_count: 
+  - action: action_validate_number
+  - action: action_search_books_by_author
+
+ 
+- story: book by title
+  steps:
+  - intent: prefer_op_lb
+  - action: utter_ol_path
+  - action: action_listen
+  - intent: deny
+  - action: utter_book_req
+  - action: action_listen
+  - intent: book_availability
+    entities:
+    - book_title: 
+  - slot_was_set:
+    - book_title: 
+  - action: action_confirm_book_title  # This action can confirm the title with the user
+  - action: action_check_availability   # This action will handle fetching the availability
+
+- story: book by title long view
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: ask_expertise
+  - action: utter_expertise
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - intent: prefer_op_lb
+  - action: utter_ol_path
+  - action: action_listen
+  - intent: deny
+  - action: utter_book_req
+  - action: action_listen
+  - intent: book_availability
+    entities:
+    - book_title: 
+  - slot_was_set:
+    - book_title: 
+  - action: action_confirm_book_title
+  - action: action_check_availability
+  
+- story: wider search
+  steps:
+  - action: utter_ask_further_search
+  - action: action_listen
+  - intent: affirm
+  - action: action_search_alternative_editions
+  
+- story: expertise_check
+  steps: 
+  - intent: ask_expertise
+  - action: utter_expertise
+  - checkpoint: expertise_done  # Marks completion of this optional step
+  
+  
+- story: interactive_
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - checkpoint: expertise_done 
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - intent: prefer_op_lb
+  - action: utter_ol_path
+  - intent: deny
+  - action: utter_book_req
+  - intent: book_availability
+    entities:
+    - book_title: 
+  - slot_was_set:
+    - book_title: 
+  - action: action_confirm_book_title
+  - action: action_check_availability
+  - slot_was_set:
+    - preview_status: noview
+  - intent: affirm
+  - action: action_search_alternative_editions
+  - slot_was_set:
+    - author_name: 
+  - slot_was_set:
+    - book_title: 
+
+- story: resetting the slot after invalid number
+  steps:
+  - action: action_validate_number
+  - slot_was_set:
+    - book_count: null
+  - action: action_confirm_author
+  - intent: provide_number
+    entities:
+    - book_count: 
+  - slot_was_set:
+    - book_count: 
+  - action: action_validate_number
+  - action: action_search_books_by_author
+ 
+
+
+
+- story: interactive_story_11
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - intent: prefer_op_lb
+  - action: utter_ol_path
+  - intent: affirm
+  - action: utter_author_req
+  - intent: books_by_author
+    entities:
+    - author_name: 
+  - slot_was_set:
+    - author_name: 
+  - action: action_confirm_author
+  - intent: provide_number
+    entities:
+    - book_count: 
+  - slot_was_set:
+    - book_count: 
+  - action: action_validate_number
+  - slot_was_set:
+    - book_count: null
+  - action: action_search_books_by_author
+  - slot_was_set:
+    - book_count: null
+  - intent: provide_number
+    entities:
+    - book_count: 
+  - slot_was_set:
+    - book_count: 
+  - action: action_validate_number
+  - action: action_search_books_by_author
+  - slot_was_set:
+    - book_count: null
+  - intent: book_availability
+    entities:
+    - book_title: 
+  - slot_was_set:
+    - book_title: 
+  - action: action_confirm_book_title
+  - action: action_check_availability
+  - slot_was_set:
+    - preview_status:
+
+- story: overview
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - intent: prefer_op_lb
+  - action: utter_ol_path
+  - intent: deny
+  - action: utter_book_req
+  - intent: book_availability
+    entities:
+    - book_title: 
+  - slot_was_set:
+    - book_title: 
+  - action: action_confirm_book_title
+  - action: action_check_availability
+  - slot_was_set:
+    - preview_status: 
+  - intent: affirm
+  - action: action_search_alternative_editions
+  - slot_was_set:
+    - author_name: 
+  - slot_was_set:
+    - book_title: 
+  - intent: thank_you
+  - action: utter_you_are_welcome
+
+- story: interactive_story_1a
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - intent: affirm
+  - action: action_present_genres
+  - action: utter_ask_genre_selection
+  - intent: picking_genre
+    entities:
+    - chosen_genre: 
+  - slot_was_set:
+    - chosen_genre: 
+  - action: action_show_books_by_genre
+  - action: utter_ask_book_selection
+  - intent: selected_book
+    entities:
+    - mockBook_title: 
+  - slot_was_set:
+    - mockBook_title: 
+  - action: action_book_details
+ 
+- story: book_details
+  steps: 
+  - intent: selected_book
+    entities:
+    - mockBook_title: 
+  - slot_was_set:
+    - mockBook_title: 
+  - action: action_book_details
+
+
+- story: interactive_story_1b
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: ask_expertise
+  - action: utter_expertise
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - intent: deny
+  - action: action_books_perLibrary
+  - intent: affirm
+  - action: utter_library_num
+  - intent: choosing_library
+    entities:
+    - library_index: 
+  - slot_was_set:
+    - library_index: 
+  - action: action_present_library_books
+  - slot_was_set:
+    - library_index: 
+  - action: utter_ask_book_selection
+  - intent: selected_book
+    entities:
+    - mockBook_title: 
+  - slot_was_set:
+    - mockBook_title: 
+  - action: action_book_details
+
+- story: interactive_story_1c
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: ask_expertise
+  - action: utter_expertise
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - intent: deny
+  - action: action_books_perLibrary
+  - intent: deny
+  - action: utter_assumption
+  - intent: affirm
+  - action: action_handle_second_no_response
+  - action: utter_ask_book_selection
+  - intent: selected_book
+    entities:
+    - mockBook_title: 
+  - slot_was_set:
+    - mockBook_title: 
+  - action: action_book_details
+
+- story: interactive_story_1d
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: ask_expertise
+  - action: utter_expertise
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - intent: prefer_op_lb
+  - action: utter_ol_path
+  - intent: affirm
+  - action: utter_author_req
+  - intent: books_by_author
+    entities:
+    - author_name: 
+  - slot_was_set:
+    - author_name: 
+  - action: action_confirm_author
+  - intent: provide_number
+    entities:
+    - book_count: 
+  - slot_was_set:
+    - book_count: 
+  - action: action_validate_number
+  - slot_was_set:
+    - book_count: 
+  - action: action_search_books_by_author
+  - slot_was_set:
+    - book_count: 
+  - intent: provide_number
+    entities:
+    - book_count:
+  - slot_was_set:
+    - book_count: 
+  - action: action_validate_number
+  - action: action_search_books_by_author
+  - slot_was_set:
+    - book_count: 
+  - intent: book_availability
+    entities:
+    - book_title: 
+  - slot_was_set:
+    - book_title: 
+  - action: action_confirm_book_title
+  - action: action_check_availability
+  - slot_was_set:
+    - preview_status: noview
+  - intent: affirm
+  - action: action_search_alternative_editions
+  - slot_was_set:
+    - author_name: 
+  - slot_was_set:
+    - book_title: 
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: ask_expertise
+  - action: utter_expertise
+  - intent: request_read_book
+  - action: utter_suggest_book
+  - intent: prefer_mock_center
+  - action: action_mocklibrary_suggestions
+  - intent: affirm
+  - action: action_present_genres
+  - action: utter_ask_genre_selection
+  - intent: picking_genre
+    entities:
+    - chosen_genre: 
+  - slot_was_set:
+    - chosen_genre: 
+  - action: action_show_books_by_genre
+  - action: utter_ask_book_selection
+  - intent: selected_book
+    entities:
+    - mockBook_title: 
+  - slot_was_set:
+    - mockBook_title: 
+  - action: action_book_details
+
+- story: version
+  steps:
+  - intent: picking_genre
+    entities:
+    - chosen_genre: S
+  - slot_was_set:
+    - chosen_genre: 
+  - action: action_show_books_by_genre
+  - action: utter_ask_book_selection
+  - intent: selected_book
+    entities:
+    - mockBook_title: 
+  - slot_was_set:
+    - mockBook_title: 
+  - action: action_book_details

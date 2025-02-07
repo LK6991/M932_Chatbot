@@ -1,0 +1,413 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - Hello
+    - Hello!
+    - Hi
+- intent: thank_you
+  examples: |
+    - Thanks
+    - Thank you
+    - Thanks a lot
+    - Appreciate it
+    - Thanks so much
+    - Many thanks
+    - Thanks a bunch
+    - Thank you very much
+    - thanks!
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - ok
+    - alright
+    - yup!
+    - yeap
+    - yup
+    - yeap!
+    - yes!
+    - Yes
+    - Yes!
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - not really...
+    - No, thank you
+    - I don't think so
+    - no way
+    - not really
+    - i do not
+    - don't
+    - forget it
+    - nah
+    - no!
+    - no thanks
+    - thanks but no
+    - No
+    - Not really
+    - No thanks
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am good
+    - I am fine
+    - I feel great
+    - I am fine!
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+    - I am good!
+    - I am good...
+    - I am ok
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - i have been better
+    - i ve been better
+    - i 've been better
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so sad
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: request_read_book
+  examples: |
+    - I want to read a book
+    - Any books available?
+    - I would like to read!
+    - I would like to read a book
+    - I need a book to read
+    - Anything to read?
+    - Suggest me a book to read
+    - I am here for books
+    - I want to read books
+    - I want to read
+- intent: ask_expertise
+  examples: |
+    - what is your field?
+    - what is your expertise?
+    - what do you do?
+    - which is your purpose?
+    - what is your domain?
+    - what are you specialized in?
+    - what is your area of expertise?
+    - what is your role?
+    - tell me about yourself
+    - tell me about your abilities.
+    - what do you do for a living?
+    - Do you have a special task?
+    - What is your domain?
+    - Tell me your abilities
+    - What do you do for a living?
+    - What are your abilities?
+    - What is your domain
+    - What is your field?
+    - What is your expertise?
+- intent: prefer_mock_center
+  examples: |
+    - I prefer mock center
+    - Give me suggestions from mock center
+    - I want suggestions from mock center
+    - Mock center, please
+    - Show me books from MockCenter
+    - Mock center
+    - mock center
+    - MockCenter!
+    - Let's try Mock center!
+    - Let's try Mock center
+    - mockcenter
+    - mock center!
+- intent: prefer_op_lb
+  examples: |
+    - i prefer open library
+    - open library please
+    - show me books from Open Library
+    - open library
+    - openLibrary!
+    - i have a preference in real books
+    - Let's try open library
+    - Open library
+    - Open Library
+- intent: picking_genre
+  examples: |
+    - [Science Fiction](chosen_genre)
+    - [Cooking](chosen_genre)
+    - [Gardening](chosen_genre)
+    - [Hobbies](chosen_genre)
+    - [Metaphysics](chosen_genre)
+    - [Games](chosen_genre)
+    - I want to read [Science Fiction](chosen_genre)
+    - I want to read [Hobbies](chosen_genre)
+    - I want to read [Games](chosen_genre)
+    - I want to read [Cooking](chosen_genre)
+    - I want to read [Gardening](chosen_genre)
+    - I want to read [Metaphysics](chosen_genre)
+    - Show me books about [Cooking](chosen_genre)
+    - Give me [Gardening](chosen_genre) books
+    - Give me [Cooking](chosen_genre) books
+    - Give me [Games](chosen_genre) books
+    - Give me [Hobbies](chosen_genre) books
+    - Give me [Metaphysics](chosen_genre) books
+    - Give me [Science fiction](chosen_genre) books
+    - I prefer [Hobbies](chosen_genre)
+    - I prefer [Metaphysics](chosen_genre)
+    - I prefer [Games](chosen_genre)
+    - I prefer [Gardening](chosen_genre)
+    - I prefer [Cooking](chosen_genre)
+    - I prefer [Science fiction](chosen_genre)
+    - Let's try [Gardening](chosen_genre)
+    - Let's try [Hobbies](chosen_genre)
+    - Let's try [Games](chosen_genre)
+    - Let's try [Metaphysics](chosen_genre)
+    - Let's try [Science_Fiction](chosen_genre)
+    - Let's try [Cooking](chosen_genre)
+    - [Science Fiction](chosen_genre)
+- intent: selected_book
+  examples: |
+    - I pick [Futuristic_Sports](mockBook_title)
+    - I choose [Futuristic_Sports](mockBook_title)
+    - [Futuristic_Sports](mockBook_title)
+    - Check [Futuristic_Sports](mockBook_title)
+    - I pick [Cars_Mars](mockBook_title)
+    - I choose [Cars_Mars](mockBook_title)
+    - [Cars_Mars](mockBook_title)
+    - Check [Cars_Mars](mockBook_title)
+    - I pick [Apple_Trees](mockBook_title)
+    - I choose [Apple_Trees](mockBook_title)
+    - [Apple_Trees](mockBook_title)
+    - Check [Apple_Trees](mockBook_title)
+    - I pick [Chess_Mantras](mockBook_title)
+    - I choose [Chess_Mantras](mockBook_title)
+    - [Chess_Mantras](mockBook_title)
+    - Check [Chess_Mantras](mockBook_title)
+    - I pick [Pancakes_Cookbook](mockBook_title)
+    - I choose [Pancakes_Cookbook](mockBook_title)
+    - [Pancakes_Cookbook](mockBook_title)
+    - Check [Pancakes_Cookbook](mockBook_title)
+    - I want to read [Crepe_Recipes](mockBook_title)
+    - I pick [Crepe_Recipes](mockBook_title)
+    - I choose [Crepe_Recipes](mockBook_title)
+    - [Crepe_Recipes](mockBook_title)
+    - Check [Crepe_Recipes](mockBook_title)
+    - I pick [Lake_Fishing](mockBook_title)
+    - I choose [Lake_Fishing](mockBook_title)
+    - [Lake_Fishing](mockBook_title)
+    - Check [Lake_Fishing](mockBook_title)
+    - I pick [Ancient_Seeds](mockBook_title)
+    - [Ancient_Seeds](mockBook_title)
+    - I choose [Ancient_Seeds](mockBook_title)
+    - Check [Ancient_Seeds](mockBook_title)
+    - I pick [Purple_Waters](mockBook_title)
+    - I choose [Purple_Waters](mockBook_title)
+    - [Purple_Waters](mockBook_title)
+    - Check [Purple_Waters](mockBook_title)
+    - [Futuristic_Sports](mockBook_title)
+- intent: choosing_library
+  examples: |
+    - [1st](library_index)
+    - [2nd](library_index)
+    - [3rd](library_index)
+    - [4th](library_index)
+    - [5th](library_index)
+    - [L1](library_index)
+    - [L2](library_index)
+    - [L3](library_index)
+    - [L4](library_index)
+    - [L5](library_index)
+    - [e-Library1](library_index)
+    - [e-Library2](library_index)
+    - [e-Library3](library_index)
+    - [e-Library4](library_index)
+    - [e-Library5](library_index)
+    - [Library1](library_index)
+    - [Library2](library_index)
+    - [Library3](library_index)
+    - [Library4](library_index)
+    - [Library5](library_index)
+    - Show me [e-Library1](library_index)
+    - Show me [e-Library2](library_index)
+    - Show me [e-Library3](library_index)
+    - Show me [e-Library4](library_index)
+    - Show me [e-Library5](library_index)
+    - [4th](library_index)!
+- intent: general_interest
+  examples: |
+    - I like this book
+    - It seems like a nice book
+    - Interesting book
+    - I find it interesting
+    - This book looks interesting
+- intent: specific_interest
+  examples: |
+    - I want to buy it
+    - I want to purchase that book
+    - Order me this book
+    - OK I will take this book
+    - OK I will buy it
+- intent: provide_number
+  examples: |
+    - [5](book_count)
+    - [9](book_count)!
+    - [3](book_count) books!
+    - [17](book_count) books.
+    - I want [3](book_count) books.
+    - Just [2](book_count).
+    - Give me [10](book_count) books.
+    - I would like to see [7](book_count) books.
+    - Tell me [7](book_count) books.
+    - Tell me [7](book_count).
+    - [4](book_count)
+    - [12](book_count)
+    - [8](book_count)
+    - [13](book_count)
+    - [7](book_count)
+    - [6](book_count)
+- intent: books_by_author
+  examples: |
+    - [Orwell](author_name)
+    - [Papadiamantis](author_name)
+    - [Seferis](author_name)
+    - [Tolstoy](author_name)
+    - [Dostoevsky](author_name)
+    - [Shakespeare](author_name)
+    - [Hugo](author_name)
+    - [Zweig](author_name)
+    - [Dickens](author_name)
+    - [Homer](author_name)
+    - [Verne](author_name)
+    - [Hemingway](author_name)
+    - [Poe](author_name)
+    - [Aristotle](author_name)
+    - [Kafka](author_name)
+    - [Andersen](author_name)
+    - Show me books by [Tolkien](author_name).
+    - Show me books by [Hemingway](author_name).
+    - Show me books by [Seferis](author_name).
+    - Show me books by [Orwell](author_name).
+    - Show me books by [Shakespeare](author_name).
+    - Show me books by [Papadimantis](author_name).
+    - List books written by [Hemingway](author_name).
+    - Show me books by [Kafka](author_name).
+    - Show me books by [Andersen](author_name).
+    - Show me books by [Verne](author_name).
+    - Show me books by [Hugo](author_name).
+    - List books written by [Papadiamantis](author_name).
+    - List books written by [Orwell](author_name).
+    - What books did [Agatha Christie](author_name) write?
+    - Books of [Orwell](author_name)?
+    - Books of [Tolstoy](author_name)?
+    - Books of [Dostoevsky](author_name)?
+    - Books of [Zweig](author_name)?
+    - Books of [Twain](author_name)?
+    - Books of [Seferis](author_name)?
+    - Books of [Papadiamantis](author_name)?
+    - Books of [Verne](author_name)?
+    - Books of [Homer](author_name)?
+    - Books of [Hugo](author_name)?
+    - Books of [Hemingway](author_name)?
+    - Books that [Dostoevsky](author_name) wrote.
+    - Books that [Hugo](author_name) wrote.
+    - Books that [Verne](author_name) wrote.
+    - Books that [Homer](author_name) wrote.
+    - Books that [Zweig](author_name) wrote.
+    - Books by [Hugo](author_name).
+    - Books by [Hemingway](author_name)?
+    - Books by [Homer](author_name)?
+    - Books by [Kafka](author_name)?
+    - Books by [Dickens](author_name)?
+    - Books by [Andersen](author_name)?
+    - Books by [Verne](author_name)?
+    - Books by [Hugo](author_name)?
+    - Books by [Aristotle](author_name)?
+    - Books by [Papadiamantis](author_name)?
+    - [Shakespeare](author_name)
+- intent: book_availability
+  examples: |
+    - [The Odyssey](book_title)
+    - [Iliad](book_title)
+    - [Moby Dick](book_title)
+    - [Iliada](book_title)
+    - [Le petit prince](book_title)
+    - [Animal Farm](book_title)
+    - [Ruy Blas](book_title)
+    - [1984](book_title)
+    - [Tempest](book_title)
+    - [Othello](book_title)
+    - [As You Like It](book_title)
+    - [Macbeth](book_title)
+    - Is [Odyssey](book_title) available?
+    - Is [The Odyssey](book_title) available?
+    - Is [Moby Dick](book_title) available?
+    - Is [Le petit prince](book_title) available?
+    - Is [1984](book_title) available?
+    - Is [Animal Farm](book_title) available?
+    - Is [Iliad](book_title) available?
+    - Is [Iliada](book_title) available?
+    - Is [Ruy Blas](book_title) available?
+    - Is [Miserables](book_title) available?
+    - Is [Othello](book_title) available?
+    - Is [Tempest](book_title) available?
+    - Is [Macbeth](book_title) available?
+    - Is [Around the world in 80 days](book_title) available?
+    - [Odyssey](book_title)
+    - [Miserables](book_title)
+    - [Hunchback of Notre Dame](book_title)
+    - [Around the world in 80 days](book_title)
+    - [De la terre à la lune](book_title)
+    - [Thumbelina](book_title)
+    - [The Ugly Duckling](book_title)
