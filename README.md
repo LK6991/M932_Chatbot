@@ -60,8 +60,8 @@ The examples are demonstrated better in the PowerPointfile I submitted!
 ## Future Improvements
 - Make the dialogues less linear and more flexible, relying more on stories and less to rules
 - Utilize more entities of yaml, that allow more creative setup and looping paths in case of wrong input
-- Enhance NLU with bigger quantities of example, option that I did choose for now to avoid complexities in my effort.
+- Enhance NLU with more  examples, option that I was cautious for now to avoid complexities in this simple effort.
 - Utilization of a range of APIs of online libraries, and creating fluid functions that allow a book search across multiple sources!
-- Extending the capabiilities of the chatbot, so as to perform a separate search for Audiobook!
+- Extending the capabiilities of the chatbot, so as to perform a parallel or separate search for Audiobooks!
 
 
