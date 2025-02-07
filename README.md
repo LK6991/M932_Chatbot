@@ -1,8 +1,9 @@
 # Task-Oriented Dialog System Prototype
 
 ## Domain
-A chatbot designed to retrieve information from mock or online library.
-Reason for this choice: In a highly digitalized world, reading remains a very basic interest or hobby,
+A chatbot designed to retrieve information from a mock or online library.
+Reason for this choice: 
+In a highly digitalized world, reading remains a very basic interest or hobby,
 so implementing a chatbot, even in a very basic form, to automate a bit the searching for online books was appealing.
 The core idea was to check availability of books online, so the user can save time from individual checking across sources.
 In its ideal form (check #Future Improvements) that would lead to a wider construction of functionalities, to scan across multiple sources.
@@ -14,8 +15,8 @@ In its ideal form (check #Future Improvements) that would lead to a wider constr
   3) - Rejecting these choices, leads to a presentation of the total list of available books --> selection of a book)
 
   Searching for a book (OpenLibrary)
-  1) - Search by author name (The user picks an author, writes a number of books (from 1 to 10), and then selects one --> gets availability status)
-  2) - Search by book title (The user writes a title (it must be written precisely to match an OpenLibrary title) --> gets availability status of the book)
+  1) - Search by author name (The user picks an author, writes a number of books (from 1 to 10), and then selects one --> gets availability status and a link)
+  2) - Search by book title (The user writes a title (it must be written precisely to match an OpenLibrary title) --> gets availability status of the book and a link)
 
 ## Data Sources
 - I constructed a Python dictionary named mock_data, which is a kind of Mock Center for the chatbots
