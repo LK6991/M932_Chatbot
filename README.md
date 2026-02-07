@@ -62,11 +62,16 @@ Additionally, a careful limit was placed in the function alternative_book_ids, w
 The examples are demonstrated in the PowerPoint report of my assignment's submission.
 
 ## Future Improvements
-Make dialogues less linear and more flexible, relying more on stories and less on rules.
+Make dialogues less linear and more flexible, relying more on stories and less on rules. 
+
 Use more YAML entities to enable more creative dialogue flows and looping paths in case of incorrect input.
+
 Improve NLU with more examples (kept minimal for now to avoid unnecessary complexity).
+
 Use multiple online-library APIs and implement functions that search across sources.
+
 Extend chatbot capabilities to support audiobook searches.
+
 
 
 
