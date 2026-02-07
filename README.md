@@ -61,7 +61,7 @@ from rasa_sdk.events import SlotSet, FollowupAction
 
 
 ## Example Runs
-The examples are demonstrated better in the PowerPoint file of my assignment's submission.
+The examples are demonstrated in the PowerPoint report of my assignment's submission.
 
 ## Future Improvements
 Make dialogues less linear and more flexible, relying more on stories and less on rules.
@@ -69,6 +69,7 @@ Use more YAML entities to enable more creative dialogue flows and looping paths 
 Improve NLU with more examples (kept minimal for now to avoid unnecessary complexity).
 Use multiple online-library APIs and implement functions that search across sources.
 Extend chatbot capabilities to support audiobook searches.
+
 
 
 
