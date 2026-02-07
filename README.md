@@ -43,12 +43,13 @@ Additionally, a careful limit was placed in the function alternative_book_ids, w
 
 ## Setup Instructions
 
-1.Download the repository.
-2.Create a Rasa project using the rasa init command in an empty folder.
-3.Place the files from this repository into your Rasa project without changing their hierarchy.
-4.Below are the imports used in the two Python files (Basic.py, actions.py) so you can install the required packages beforehand.
+1. Download the repository.
+2. Create a Rasa project using the `rasa init` command in an empty folder.
+3. Place the files from this repository into your Rasa project without changing their hierarchy.
+4. Below are the imports used in the two Python files (`Basic.py`, `actions.py`) so you can install the required packages beforehand.
 
-BASIC.PY: 
+### BASIC.PY
+```python
 import request, logging, json, re, os
 from bs4 import BeautifulSoup
 
@@ -57,6 +58,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, FollowupAction
+
 
 
 
@@ -69,6 +71,7 @@ Use more YAML entities to enable more creative dialogue flows and looping paths 
 Improve NLU with more examples (kept minimal for now to avoid unnecessary complexity).
 Use multiple online-library APIs and implement functions that search across sources.
 Extend chatbot capabilities to support audiobook searches.
+
 
 
 
