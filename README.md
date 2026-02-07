@@ -48,19 +48,15 @@ Additionally, a careful limit was placed in the function alternative_book_ids, w
 3. Place the files from this repository into your Rasa project without changing their hierarchy.
 4. Below are the imports used in the two Python files (`Basic.py`, `actions.py`) so you can install the required packages beforehand.
 
-### BASIC.PY
-```python
-import request, logging, json, re, os
-from bs4 import BeautifulSoup
+**BASIC.PY imports**
+- import request, logging, json, re, os
+- from bs4 import BeautifulSoup
 
-ACTIONS.PY:
-from typing import Any, Text, Dict, List
-from rasa_sdk import Action, Tracker
-from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet, FollowupAction
-
-
-
+**ACTIONS.PY imports**
+- from typing import Any, Text, Dict, List
+- from rasa_sdk import Action, Tracker
+- from rasa_sdk.executor import CollectingDispatcher
+- from rasa_sdk.events import SlotSet, FollowupAction
 
 ## Example Runs
 The examples are demonstrated in the PowerPoint report of my assignment's submission.
@@ -71,6 +67,7 @@ Use more YAML entities to enable more creative dialogue flows and looping paths 
 Improve NLU with more examples (kept minimal for now to avoid unnecessary complexity).
 Use multiple online-library APIs and implement functions that search across sources.
 Extend chatbot capabilities to support audiobook searches.
+
 
 
 
